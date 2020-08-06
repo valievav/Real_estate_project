@@ -1,0 +1,27 @@
+#header {
+  height: 50 px;
+  background: #10284e;
+  color: #fff;
+}
+
+#branding h1 {
+  color: #fff;
+}
+
+div.breadcrumbs {
+  background: #30caa0;
+  color: #fff;
+}
+
+div.breadcrumbs a {
+  color: #333;
+}
+
+.module caption {
+  background: #30caa0;
+}  /* sections in admin */
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button{
+  background: #10284e;
+  color: #fff;
+}  /* buttons in create record forms */
