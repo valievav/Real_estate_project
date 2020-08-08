@@ -62,3 +62,10 @@ Admin (+media):
 7. **Customize admin listings view by adding class in listings/admin.py with admin fields to display, filter etc.**
 8. **Customize admin realtors view by adding class in realtors/admin.py with admin fields to display, filter etc.**
 
+Pull DB data to listings html:
+1. **Request data from listings/views.py with Django ORM and pass context to listings.html**
+2. **For listings.html loop through listings parameter and return listing.title, listing.price etc.** - html return 
+dynamic data instead of hardcoded values
+3. **Add humanize to real_estate/settings.py**
+4. **Load humanize into listings.html and use it for formatting (20000 to 20`000 etc.)**
+
