@@ -62,8 +62,8 @@ Admin (+media):
 7. **Customize admin listings view by adding class in listings/admin.py with admin fields to display, filter etc.**
 8. **Customize admin realtors view by adding class in realtors/admin.py with admin fields to display, filter etc.**
 
-Pull DB data to listings html:
-1. **Request data from listings/views.py with Django ORM and pass context to listings.html**
+Pull DB data into listings html:
+1. **Request data in listings/views.py with Django ORM and pass context to listings.html**
 2. **For listings.html loop through listings parameter and return listing.title, listing.price etc.** - html return 
 dynamic data instead of hardcoded values
 3. **Add humanize to real_estate/settings.py**
@@ -72,4 +72,15 @@ dynamic data instead of hardcoded values
 Add pagination:
 1. **Add paginator to listings/views.py**
 2. **Update listings.html to display previous/current/available/next pages**
+
+Pull DB data into rest of the htmls (home, about, listing, search):
+1. **Request data in listings/views.py with Django ORM and pass context to htmls**
+2. **Loop through listings and realtors for templates**
+3. **Move listings section into /partials and update index, listings and search.html** - to avoid html repetition in templates
+
+Search form:
+1. **Create choices.py in /listings with list/dictionary options**
+2. **Pass choices to pages/views.py (index) and listings/views.py (search)**
+3. **Update index.html and search.html to work with choices**
+4. **Move search form section into /partials and update index and search.html** - to avoid html repetition in templates
 

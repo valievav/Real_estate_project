@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <h1>SEARCH</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+
+<section id="showcase-inner" class="showcase-search text-white py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+
+        <!-- Search form -->
+        {% include 'partials/_search_form.html' %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="listings.html">Browse Listings</a>
+        </li>
+        <li class="breadcrumb-item active"> Search Results</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Listings -->
+<section id="listings" class="py-4">
+  <div class="container">
+    <div class="row">
+
+      <!-- Loop through listings -->
+      {% include 'partials/_listings.html' %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

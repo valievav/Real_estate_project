@@ -1,0 +1,57 @@
+
+<div class="search">
+  <form action="{% url 'search' %}">
+    <!-- Form Row 1 -->
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label class="sr-only">Keywords</label>
+        <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="sr-only">City</label>
+        <input type="text" name="city" class="form-control" placeholder="City">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="sr-only">State</label>
+        <select name="state" class="form-control">
+          <option selected="true" disabled="disabled">State (All)</option>
+
+          <!-- States dropdown -->
+          {% for state_key, state_value  in state_choices.items %}
+          <option value="{{ state_key }}">{{ state_value }}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+    </div>
+    <!-- Form Row 2 -->
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label class="sr-only">Bedrooms</label>
+        <select name="bedrooms" class="form-control">
+          <option selected="true" disabled="disabled">Bedrooms (All)</option>
+
+          <!-- Bedrooms number dropdown -->
+          {% for bedroom_cnt in bedroom_choices %}
+          <option value="{{ bedroom_cnt }}">{{ bedroom_cnt }}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <select name="price" class="form-control" id="type">
+          <option selected="true" disabled="disabled">Max Price (Any)</option>
+
+          <!-- Price dropdown -->
+          {% for price_key, price_value in price_choices.items %}
+          <option value="{{ price_key }}">{{ price_value }}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+  </form>
+</div>
