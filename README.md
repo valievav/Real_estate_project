@@ -78,9 +78,11 @@ Pull DB data into rest of the htmls (home, about, listing, search):
 2. **Loop through listings and realtors for templates**
 3. **Move listings section into /partials and update index, listings and search.html** - to avoid html repetition in templates
 
-Search form:
+Search:
 1. **Create choices.py in /listings with list/dictionary options**
 2. **Pass choices to pages/views.py (index) and listings/views.py (search)**
 3. **Update index.html and search.html to work with choices**
 4. **Move search form section into /partials and update index and search.html** - to avoid html repetition in templates
+5. **Update listings/views.py to filter queryset according to search params**
+6. **Update partials/_search_form.html to keep search params on UI after the run**
 

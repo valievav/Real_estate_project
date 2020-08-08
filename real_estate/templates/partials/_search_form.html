@@ -5,12 +5,13 @@
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label class="sr-only">Keywords</label>
-        <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+        <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)"
+               value="{{ values.keywords }}">  <!-- value ensures that search keyword stays on UI-->
       </div>
 
       <div class="col-md-4 mb-3">
         <label class="sr-only">City</label>
-        <input type="text" name="city" class="form-control" placeholder="City">
+        <input type="text" name="city" class="form-control" placeholder="City" value="{{ values.city }}">
       </div>
 
       <div class="col-md-4 mb-3">
@@ -20,7 +21,9 @@
 
           <!-- States dropdown -->
           {% for state_key, state_value  in state_choices.items %}
-          <option value="{{ state_key }}">{{ state_value }}</option>
+          <option value="{{ state_key }}"
+                  {% if state_key == values.state %} selected {% endif %}>  <!-- to ensure that search keyword stays on UI -->
+            {{ state_value }}</option>
           {% endfor %}
 
         </select>
@@ -34,8 +37,10 @@
           <option selected="true" disabled="disabled">Bedrooms (All)</option>
 
           <!-- Bedrooms number dropdown -->
-          {% for bedroom_cnt in bedroom_choices %}
-          <option value="{{ bedroom_cnt }}">{{ bedroom_cnt }}</option>
+          {% for bedroom_key, bedroom_value in bedroom_choices.items %}
+          <option value="{{ bedroom_key }}"
+                  {% if bedroom_key == values.bedrooms %} selected {% endif %}>
+            {{ bedroom_value }}</option>
           {% endfor %}
 
         </select>
@@ -46,7 +51,9 @@
 
           <!-- Price dropdown -->
           {% for price_key, price_value in price_choices.items %}
-          <option value="{{ price_key }}">{{ price_value }}</option>
+          <option value="{{ price_key }}"
+                  {% if price_key == values.price %} selected {% endif %}>
+            {{ price_value }}</option>
           {% endfor %}
 
         </select>
