@@ -107,7 +107,7 @@
               </li>
               <li class="list-group-item text-secondary">
                 <i class="fas fa-bath"></i> Bathrooms:
-                <span class="float-right">{{ listing.barthrooms }}</span>
+                <span class="float-right">{{ listing.bathrooms }}</span>
               </li>
               <li class="list-group-item text-secondary">
                 <i class="fas fa-car"></i> Garage:
@@ -120,7 +120,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-secondary">
                 <i class="fas fa-th-large"></i> Square Feet:
-                <span class="float-right">{{ listing.sqrt }}</span>
+                <span class="float-right">{{ listing.sqft }}</span>
               </li>
               <li class="list-group-item text-secondary">
                 <i class="fas fa-square"></i> Lot Size:
@@ -155,6 +155,8 @@
           <div class="card-body">
             <h5 class="card-title">Property Realtor</h5>
             <h6 class="text-secondary">{{ listing.realtor }}</h6>
+            <h6 class="text-info">
+              <i class="fa fa-phone" aria-hidden="true"></i> {{ listing.realtor.phone }}</h6>
           </div>
         </div>
         <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
