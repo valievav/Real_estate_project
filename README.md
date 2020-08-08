@@ -40,7 +40,7 @@ they wouldn't have separate realtors page (will be only as part of existing page
 7. **Create views in listings/views.py to return listings.html, listing.html, search.tml**
 
 Connect Postgres:
-1. **Create new db**
+1. **Create new db** - using PGAdmin if exists local server, else install [server+PGAdmin](https://www.postgresql.org/download/) 
 2. **Install psycopg2 (Postgres adapter)** - pip install psycopg2, pip install psycopg2-binary
 3. **Update real_estate/settings.py DATABASES section**
 4. **Run init migration** - python manage.py migrate
@@ -68,4 +68,8 @@ Pull DB data to listings html:
 dynamic data instead of hardcoded values
 3. **Add humanize to real_estate/settings.py**
 4. **Load humanize into listings.html and use it for formatting (20000 to 20`000 etc.)**
+
+Add pagination:
+1. **Add paginator to listings/views.py**
+2. **Update listings.html to display previous/current/available/next pages**
 
