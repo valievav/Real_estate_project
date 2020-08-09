@@ -109,8 +109,14 @@ Registration, Login & Logout:
 Contacts app:
 1. **Create app _contacts_** - python manage.py startapp contacts
 2. **Add _contacts_ to real_estate/settings.py INSTALLED_APPS list**
-3. **Create contacts/models.py with Contact model**
-4. **Create migrations** - python manage.py makemigrations contacts
-5. **Run migrations** - python manage.py migrate contacts
+3. **Create contacts/urls.py**
+4. **Add contacts to real_estate/urls.py**
+5. **Create contacts/models.py with Contact model**
+6. **Create migrations** - python manage.py makemigrations contacts
+7. **Run migrations** - python manage.py migrate contacts
+8. **Add contacts to contacts/admin.py**
+9. **Update listing.html to pre-populate fields for logged in users, include alerts**
+9. **Create contact view in contacts.views.py to save form data** - with additional logic (send email to realtor, detect if form was already submitted)
+10. **Update real_estate/settings.py with email config**
 
 
