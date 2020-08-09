@@ -14,8 +14,8 @@ Pages app:
 1. **Create app _pages_** - python manage.py startapp pages
 2. **Add _pages_ to real_estate/settings.py INSTALLED_APPS list**
 3. **Create pages/urls.py**
-4. **Include pages/urls.py to real_estate/urls.py**
-5. **Create views in pages/views.py to return index.html & about.html**
+4. **Create views in pages/views.py to return index.html & about.html**
+5. **Include pages/urls.py to real_estate/urls.py**
 
 Static files (css, img, js, webfonts):
 1. **Create real_estate/static with /css, /img, /js, /webfonts**
@@ -85,4 +85,13 @@ Search:
 4. **Move search form section into /partials and update index and search.html** - to avoid html repetition in templates
 5. **Update listings/views.py to filter queryset according to search params**
 6. **Update partials/_search_form.html to keep search params on UI after the run**
+
+Accounts app:
+1. **Create accounts app** - python manage.py startapp accounts
+2. **Add _accounts_ to real_estate/settings.py INSTALLED_APPS list**
+3. **Create accounts/urls.py**
+4. **Create views in accounts/views.py linked to urls**
+5. **Include accounts/urls.py to real_estate/urls.py**
+6. **Create templates/accounts with register.html, login.html, dashboard.html**
+
 

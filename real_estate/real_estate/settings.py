@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',  # for values formatting on html templates
     'pages.apps.PagesConfig',
     'listings.apps.ListingsConfig',
     'realtors.apps.RealtorsConfig',
-    'django.contrib.humanize',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
