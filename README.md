@@ -118,5 +118,5 @@ Contacts app:
 9. **Update listing.html to pre-populate fields for logged in users, include alerts**
 9. **Create contact view in contacts.views.py to save form data** - with additional logic (send email to realtor, detect if form was already submitted)
 10. **Update real_estate/settings.py with email config**
-
+11. **Update dashboard in accounts/views.py and accounts/dashboard/html to work with db data** 
 
