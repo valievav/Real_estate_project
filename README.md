@@ -100,7 +100,17 @@ Message alerts:
 2. **Create partials/_alerts.html**
 3. **Include _alerts.html to login.html & register.html**
 
-Registration & Login:
+Registration, Login & Logout:
 1. **Update _registration_ method in accounts/views.py to validate & save user**
 2. **Update _login_ method in accounts/views.py to login user**
+3. **Update _logout_ method in accounts/views.py to logout user**
+4. **Update relative templates**
+
+Contacts app:
+1. **Create app _contacts_** - python manage.py startapp contacts
+2. **Add _contacts_ to real_estate/settings.py INSTALLED_APPS list**
+3. **Create contacts/models.py with Contact model**
+4. **Create migrations** - python manage.py makemigrations contacts
+5. **Run migrations** - python manage.py migrate contacts
+
 
