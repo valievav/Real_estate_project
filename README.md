@@ -100,5 +100,7 @@ Message alerts:
 2. **Create partials/_alerts.html**
 3. **Include _alerts.html to login.html & register.html**
 
- 
+Registration & Login:
+1. **Update _registration_ method in accounts/views.py to validate & save user**
+2. **Update _login_ method in accounts/views.py to login user**
 
