@@ -20,6 +20,7 @@ Pages app:
 Static files (css, img, js, webfonts):
 1. **Create real_estate/static with /css, /img, /js, /webfonts**
 2. **Update real_estate/settings.py to add STATIC_ROOT, STATICFILES_DIRS**
+3. **Collect static files from multiple apps into a single path for frontend web server (e.g. nginx)** - python manage.py collectstatic
 
 Templates (website htmls):
 1. **Create /templates**
@@ -94,4 +95,10 @@ Accounts app:
 5. **Include accounts/urls.py to real_estate/urls.py**
 6. **Create templates/accounts with register.html, login.html, dashboard.html**
 
+Message alerts:
+1. **Add MESSAGE_TAGS to real_estate/settings.py**
+2. **Create partials/_alerts.html**
+3. **Include _alerts.html to login.html & register.html**
+
+ 
 
