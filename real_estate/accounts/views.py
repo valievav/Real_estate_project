@@ -69,7 +69,10 @@ def login(request):
 
 
 def logout(request):  # redirect to home page
-    return redirect('index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, "You are  logged out")
+        return redirect('index')
 
 
 def dashboard(request):
