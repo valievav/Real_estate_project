@@ -120,3 +120,29 @@ Contacts app:
 10. **Update real_estate/settings.py with email config**
 11. **Update dashboard in accounts/views.py and accounts/dashboard/html to work with db data** 
 
+______________
+
+DEPLOYMENT WITH DIGITAL OCEAN 
+([summary for Digital Ocean](https://gist.github.com/bradtraversy/cfa565b879ff1458dba08f423cb01d71)):
+
+Create droplet with SSH key:
+1. **Create ssh key** - ssh-keygen -> enter path like /c/Users/.../.ssh/id_rsa_digitalocean (Git Bush on Wind10)
+2. **Get public ssh key** - cat ./.ssh/id_rsa_digitalocean.pub -> copy
+3. **Start creating Ubuntu droplet on [Digital Ocean](https://www.digitalocean.com/)**
+4. **Copy ssh key into the droplet and hit Create**
+
+Create new user (security provisions):
+1. **Connect to server console directly via Digital Ocean** or 
+**connect via local machine using Git Bush -> ssh root@111.11.111.11** - if refused -> ssh-add ./.ssh/id_rsa_digitalocean -> || if could not open connection -> eval `ssh-agent -s` and repeat ssh-add command
+2. **Create new user** - adduser djangoadmin_v
+3. **Give new user admin privileges** - usermod -aG sudo djangoadmin_v
+4. **Open user folder and create .ssh folder** - cd /home/djangoadmin_v -> mkdir .ssh -> cd .ssh
+5. **Create authorized keys with ssh key** - nano authorized_keys (paste key -> Ctrl+X -> Y to save -> Enter to exit) -> cat authorized_keys (to view key)
+6. **Exit server** - exit
+7. **Disable root login** - nano /etc/ssh/sshd_config ->PermitRootLogin no ; PasswordAuthetincation no
+8. **Reaload sshd service** - sudo systemctl reload sshd
+
+Setup Firewall:
+1. **Allow OpenSSH** - sudo ufw app list -> sudo ufw allow OpenSSH
+2. **Enable firewall** - sudo ufw enable -> sudo ufw status
+
