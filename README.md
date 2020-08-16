@@ -120,8 +120,9 @@ Contacts app:
 10. **Update real_estate/settings.py with email config**
 11. **Update dashboard in accounts/views.py and accounts/dashboard/html to work with db data** 
 
-Create requirements.txt:
+Requirements.txt:
 1. **Create requirements.txt** - pip freeze > requirements.txt (to see libs only - pip freeze)
+
 ______________
 
 DEPLOYMENT WITH DIGITAL OCEAN 
@@ -161,5 +162,21 @@ Create Virtual Environment:
 1. **Install the python3-venv package** - sudo apt install python3-venv
 2. **Create project directory** - mkdir pyapps -> cd pyapps
 3. **Create venv & activate** - python3 -m venv ./venv -> source venv/bin/activate
-4.
+
+Clone project from GIT:
+1. **Clone Git project** - git clone https://github.com/valievav/Real_estate_project.git
+2. **Install pip modules from requirements** - cd Real_estate.../real_estate -> pip install -r requirements.txt -> pip freeze (to check libs installed)
+
+Setup local settings:
+1. **Add code to project settings.py to upload local_settings.py if exist -> push to GitHub**
+```
+try:
+    from .local_settings import *
+except ImportError:
+    pass 
+```
+2. **Pull changes to server** - git pull
+3. **Create local_settings.py on server**
+
+
 

@@ -152,3 +152,10 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = '****@gmail.com'
 EMAIL_HOST_PASSWORD = '****'  # app password https://support.google.com/accounts/answer/185833#app-passwords
 EMAIL_USE_TLS = True
+
+
+# block for production server (to import settings with prod setup data)
+try:
+    from .local_settings import *
+except ImportError:
+    pass
