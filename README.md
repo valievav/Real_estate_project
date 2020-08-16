@@ -121,7 +121,7 @@ Contacts app:
 11. **Update dashboard in accounts/views.py and accounts/dashboard/html to work with db data** 
 
 Requirements.txt:
-1. **Create requirements.txt** - pip freeze > requirements.txt (to see libs only - pip freeze)
+1. **Create requirements.txt** - pip freeze > requirements.txt (to see all libs - pip freeze)
 
 ______________
 
@@ -176,7 +176,54 @@ except ImportError:
     pass 
 ```
 2. **Pull changes to server** - git pull
-3. **Create local_settings.py on server**
+3. **Create local_settings.py on server** - cd real_estate -> sudo nano local_settings.py (change SECRET_KEY, ALLOWED_HOSTS, DATABASES, DEBUG, EMAIL_*) -> Ctrl+X -> y (save) -> Enter (exit) -> cat local_settings.py (to see file)
 
+Setup project (migrations, static files, open port) & run:
+1. **Run migrations** - cd .. -> python manage.py makemigrations (no changes detected)-> python manage.py migrate
+2. **Create super user for Django admin** - python manage.py createsuperuser
+3. **Collect static files into 1 folder** - python manage.py collectstatic
+4. **Create Firewall exception for port 8000** - sudo ufw allow 8000
+5. **Run server** - python manage.py runserver 0.0.0.0:8000 (will be displayed raw html w/o css etc. because DEBUG=False, want to see full view - change to True (Ngnix will handle correct view with DEBUG=False later))
+
+Setup Gunicorn (Python WSGI HTTP Server for UNIX - used to run server w/o having console opened):
+1. **Install gunicorn on server** - pip install gunicorn
+2. **Add gunicorn to requirements.txt on server** - pip freeze > requirements.txt
+3. **Test gunicorn serve** - gunicorn --bind 0.0.0.0:8000 btre.wsgi (simple html w/o img etc.)
+4. **Stop server & deactivate Virtual Env** - Ctrl+C -> deactivate (venv is gone from console active line, venv exited)
+5. **Create gunicorn.socket file** - sudo nano /etc/systemd/system/gunicorn.socket
+```
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+```
+6. **Create gunicorn.service file** - sudo nano /etc/systemd/system/gunicorn.service
+```
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=djangoadmin
+Group=www-data
+WorkingDirectory=/home/djangoadmin_v/pyapps/btre_project
+ExecStart=/home/djangoadmin_v/pyapps/venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          real_estate.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+where djangoadmin_v - droplet user name
+7. **Start and enable gunicorn socket** - sudo systemctl start gunicorn.socket -> sudo systemctl enable gunicorn.socket
+8. **Check status of guinicorn** - sudo systemctl status gunicorn.socket (should be active, listening)
+9. **Check the existence of gunicorn.sock** - file /run/gunicorn.sock (make sure exists)
 
 
