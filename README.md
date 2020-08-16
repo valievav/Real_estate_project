@@ -120,6 +120,8 @@ Contacts app:
 10. **Update real_estate/settings.py with email config**
 11. **Update dashboard in accounts/views.py and accounts/dashboard/html to work with db data** 
 
+Create requirements.txt:
+1. **Create requirements.txt** - pip freeze > requirements.txt (to see libs only - pip freeze)
 ______________
 
 DEPLOYMENT WITH DIGITAL OCEAN 
@@ -133,7 +135,7 @@ Create droplet with SSH key:
 
 Create new user (security provisions):
 1. **Connect to server console directly via Digital Ocean** or 
-**connect via local machine using Git Bush -> ssh root@111.11.111.11** - if refused -> ssh-add ./.ssh/id_rsa_digitalocean -> || if could not open connection -> eval `ssh-agent -s` and repeat ssh-add command
+**connect via local machine using Git Bush -> ssh root@111.11.111.11** - if refused -> ssh-add ./.ssh/id_rsa_digitalocean -> || if could not open connection -> eval ssh-agent -s ("ssh-agent -s" in ``) and repeat ssh-add command
 2. **Create new user** - adduser djangoadmin_v
 3. **Give new user admin privileges** - usermod -aG sudo djangoadmin_v
 4. **Open user folder and create .ssh folder** - cd /home/djangoadmin_v -> mkdir .ssh -> cd .ssh
@@ -145,4 +147,19 @@ Create new user (security provisions):
 Setup Firewall:
 1. **Allow OpenSSH** - sudo ufw app list -> sudo ufw allow OpenSSH
 2. **Enable firewall** - sudo ufw enable -> sudo ufw status
+
+Install software:
+1. **Update packages** - sudo apt update -> sudo apt upgrade
+2. **Install python packages** - sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
+
+Create POSTGRES DB and Admin:
+1. **Create postgres DB & ADMIN** - sudo -u postgres psql -> CREATE DATABASE website_prod; -> CREATE USER dbadmin WITH PASSWORD '123!';
+2. **Setup admin role** - ALTER ROLE dbadmin SET client_encoding TO 'utf8'; -> ALTER ROLE dbadmin SET default_transaction_isolation TO 'read committed'; -> ALTER ROLE dbadmin SET timezone TO 'UTC';
+3. **Grant all privileges to admin** - GRANT ALL PRIVILEGES ON DATABASE re_prod TO dbadmin; -> \q
+
+Create Virtual Environment:
+1. **Install the python3-venv package** - sudo apt install python3-venv
+2. **Create project directory** - mkdir pyapps -> cd pyapps
+3. **Create venv & activate** - python3 -m venv ./venv -> source venv/bin/activate
+4.
 
