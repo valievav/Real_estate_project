@@ -134,7 +134,7 @@ Requirements.txt:
 ______________
 
 DEPLOYMENT WITH DIGITAL OCEAN 
-([summary for Digital Ocean](https://gist.github.com/bradtraversy/cfa565b879ff1458dba08f423cb01d71)):
+(see [steps from course](https://gist.github.com/bradtraversy/cfa565b879ff1458dba08f423cb01d71) or [steps from DO](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04#testing-socket-activation))
 
 Create SSH key with Putty:
 1. **Download [Putty and puttygen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)**
