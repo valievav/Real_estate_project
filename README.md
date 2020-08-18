@@ -105,6 +105,7 @@ Registration, Login & Logout:
 2. **Update _login_ method in accounts/views.py to login user**
 3. **Update _logout_ method in accounts/views.py to logout user**
 4. **Update relative templates**
+5. **Add dynamic title to all template pages** - to display smth like 'Website | Welcome' in browse tab
 
 Contacts app:
 1. **Create app _contacts_** - python manage.py startapp contacts
@@ -294,4 +295,4 @@ server {
 7. **Restart NGINX** - sudo systemctl restart nginx
 8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :)
 9. **If issues** - (check nginx running) systemctl status nginx -> (check issue) sudo tail -30 /var/log/nginx/error.log 
-
+10 **(Optional) restart Reload NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
