@@ -296,3 +296,12 @@ server {
 8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :)
 9. **If issues** - (check nginx running) systemctl status nginx -> (check issue) sudo tail -30 /var/log/nginx/error.log 
 10 **(Optional) restart Reload NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
+
+______________
+WEBSITE SCREENSHOTS:
+
+![Home](readme_img/home.png)
+![About](readme_img/about.png)
+![Listings](readme_img/listings.png)
+![Register](readme_img/register.png)
+![Login](readme_img/login.png)
