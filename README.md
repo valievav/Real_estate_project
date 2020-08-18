@@ -235,7 +235,7 @@ Setup Gunicorn (Python WSGI HTTP Server for UNIX - used to run server w/o having
 1. **Install gunicorn on server** - pip install gunicorn
 2. **Add gunicorn to requirements.txt on server** - pip freeze > requirements.txt
 3. **Test gunicorn serve** - gunicorn --bind 0.0.0.0:8000 real_estate.wsgi (simple html w/o img etc.)
-4. **Stop server & deactivate Virtual Env** - Ctrl+C -> deactivate (venv is gone from console active line, venv exited)
+4. **Stop server & deactivate Virtual Env** - Ctrl+C -> deactivate (exit virtual env)
 5. **Create gunicorn.socket file** - sudo nano /etc/systemd/system/gunicorn.socket
 ```
 [Unit]
@@ -257,7 +257,7 @@ After=network.target
 [Service]
 User=djangoadmin
 Group=www-data
-WorkingDirectory=/home/djangoadmin/pyapps/Real_estate_project
+WorkingDirectory=/home/djangoadmin/pyapps/Real_estate_project/real_estate
 ExecStart=/home/djangoadmin/pyapps/venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
@@ -281,11 +281,11 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/djangoadmin/pyapps/Real_estate_project;
+        root /home/djangoadmin/pyapps/Real_estate_project/real_estate;
     }
     
     location /media/ {
-        root /home/djangoadmin/pyapps/Real_estate_project;    
+        root /home/djangoadmin/pyapps/Real_estate_project/real_estate; 
     }
 
     location / {
@@ -300,7 +300,7 @@ server {
 5. **Remove port 8000 from firewall & open it up on port 80** - sudo ufw delete allow 8000 -> sudo ufw allow 'Nginx Full'
 6. **Increase the max upload size in nginx conf** - sudo nano /etc/nginx/nginx.conf -> under http section add - client_max_body_size 20M;
 7. **Restart NGINX** - sudo systemctl restart nginx
-8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :)
+8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :) CONGRATS!
 9. **If issues** - (check nginx running) systemctl status nginx -> (check issue) sudo tail -30 /var/log/nginx/error.log 
-10 **(Optional) restart Reload NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
+10. **(Optional) restart Reload NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
 
