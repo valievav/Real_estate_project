@@ -14,7 +14,7 @@ _________
 WORKFLOW:
 
 Project:
-1. **Create project** - django-admin startproject real_estate
+1. **Create project** - django-admin.py startproject real_estate
 2. **Add gitignore & readme**
 
 Pages app:
