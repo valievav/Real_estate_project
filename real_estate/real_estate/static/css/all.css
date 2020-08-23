@@ -3813,3 +3813,8 @@ readers do not read off random characters that represent icons */
     height: 15vw;
     object-fit: cover;
 }
+
+.rounded-circle {
+  height: 260px;
+  width: 300px;
+}

@@ -320,7 +320,13 @@ server {
 5. **Remove port 8000 from firewall & open it up on port 80** - sudo ufw delete allow 8000 -> sudo ufw allow 'Nginx Full'
 6. **Increase the max upload size in nginx conf** - sudo nano /etc/nginx/nginx.conf -> under http section add - client_max_body_size 20M;
 7. **Restart NGINX** - sudo systemctl restart nginx
-8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :) CONGRATS!
+8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :) YEY!
 9. **If issues** - (check nginx running) systemctl status nginx -> (check issue) sudo tail -30 /var/log/nginx/error.log 
-10. **(Optional) restart Reload NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
+
+On repo update:
+1. **GOTO repo location** - cd /home/djangoadmin/pyapps/Real_estate_project
+2. **Pull changes** - git pull
+3. **Restart NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
+4. **Clear browser cache**
+5. **If issues - regenerate static folder** - cd /home/djangoadmin/pyapps -> source venv/bin/activate -> python manage.py collectstatic -> deactivate -> Restart NGINX & Gunicorn
 
