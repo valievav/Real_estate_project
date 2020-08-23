@@ -7,8 +7,6 @@ WEBSITE SCREENSHOTS:
 ![Register](readme_img/register.png)
 ![Login](readme_img/login.png)
 
-Based on ['Python Django Dev To Deployment course'](https://learning.oreilly.com/videos/python-django-dev/9781838641283)
-
 _________
 
 WORKFLOW:
