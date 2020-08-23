@@ -18,8 +18,8 @@ def index(request):
 
 
 def about(request):
-    realtors = Realtor.objects.order_by("-is_mvp", "hire_date")
-    mvp_realtors = Realtor.objects.filter(is_mvp=True)
+    realtors = Realtor.objects.filter(is_published=True).order_by("-is_mvp", "hire_date")
+    mvp_realtors = Realtor.objects.filter(is_mvp=True, is_published=True)
 
     context = {
         "realtors": realtors,
