@@ -1,3 +1,25 @@
+OVERVIEW:
+
+Real estate website for property listings.
+
+FUNCTIONALITY:
+
+- Website owner can post listings via Admin with full control over listings
+- User can register and log in
+- Unauthenticated user can create inquiry using listing inquiry form
+- Authenticated user can do the same and have its data pre-populated in form
+- Authenticated user cannot make inquiry to the same listing more than once (warning popup)
+- Authenticated user can view all completed inquires in User Dashboard
+
+
+TECH STACK:
+- Bootstrap/CSS/JS - front-end
+- Django - back-end, admin
+- Postgres - data storage
+- Digital Ocean - cloud hosting 
+- Gunicorn - WSGI (Web Server Gateway Interface) - communication layer between NGINX and Django
+- NGINX - web server (handles static files)
+
 ______________
 WEBSITE SCREENSHOTS:
 
