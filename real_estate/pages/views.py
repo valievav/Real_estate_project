@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-from listings.models import Listing, Realtor
 from listings.choices import bedroom_choices, price_choices, state_choices
+from listings.models import Listing, Realtor
 
 
 def index(request):

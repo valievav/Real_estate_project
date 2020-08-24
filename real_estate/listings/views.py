@@ -1,8 +1,9 @@
+from django.core.paginator import Paginator
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, render
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-from .models import Listing
 from .choices import bedroom_choices, price_choices, state_choices
+from .models import Listing
 
 
 def index(request):
@@ -39,14 +40,14 @@ def search(request):
     price = request.GET.get('price')
 
     if keywords:
-        queryset_list = queryset_list.filter(description__icontains=keywords)
+        queryset_list = queryset_list.filter(Q(description__icontains=keywords) | Q(title__icontains=keywords))
     if city:
         queryset_list = queryset_list.filter(city__iexact=city)
-    if state:
+    if state and state != 'All':
         queryset_list = queryset_list.filter(state__iexact=state)
-    if bedrooms:
+    if bedrooms and bedrooms != 'All':
         queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
-    if price:
+    if price and price != 'Any':
         queryset_list = queryset_list.filter(price__lte=price)
 
     context = {
