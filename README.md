@@ -328,5 +328,6 @@ On repo update:
 2. **Pull changes** - git pull
 3. **Restart NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
 4. **Clear browser cache**
-5. **If issues - regenerate static folder** - cd /home/djangoadmin/pyapps -> source venv/bin/activate -> cd Real_estate_project/real_estate -> python manage.py collectstatic -> deactivate -> Restart NGINX & Gunicorn
+5. **If issues** - cd /home/djangoadmin/pyapps -> source venv/bin/activate -> cd Real_estate_project/real_estate -> ACTION -> deactivate -> Restart NGINX & Gunicorn, 
+where ACTION - regenerate static folder (python manage.py collectstatic)/ run migrations etc.
 

@@ -45,7 +45,7 @@ def search(request):
         queryset_list = queryset_list.filter(city__iexact=city)
     if state and state != 'All':
         queryset_list = queryset_list.filter(state__iexact=state)
-    if bedrooms and bedrooms != 'All':
+    if bedrooms and bedrooms != 'Any':
         queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
     if price and price != 'Any':
         queryset_list = queryset_list.filter(price__lte=price)
