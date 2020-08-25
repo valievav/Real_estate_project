@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
     'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [

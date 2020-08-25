@@ -1,8 +1,8 @@
-#### OVERVIEW:
+### OVERVIEW:
 
 Real estate website for property listings.
 
-#### FUNCTIONALITY:
+### FUNCTIONALITY:
 
 - Website owner can post listings via Admin with full control over listings
 - User can register and log in
@@ -12,7 +12,7 @@ Real estate website for property listings.
 - Authenticated user can view all completed inquires in User Dashboard
 
 
-#### TECH STACK:
+### TECH STACK:
 - Bootstrap/CSS/JS - front-end
 - Django - back-end, admin
 - Postgres - data storage
@@ -21,7 +21,7 @@ Real estate website for property listings.
 - NGINX - web server (handles static files)
 
 ______________
-#### WEBSITE SCREENSHOTS:
+### WEBSITE SCREENSHOTS:
 
 ![Home](readme_img/home.png)
 ![About](readme_img/about.png)
@@ -332,4 +332,16 @@ where ACTION - regenerate static folder (python manage.py collectstatic)/ run mi
 ---
 ###  API
 
-IN PROGRESS
+<ins>Create API endpoints:
+1. **Create new api app** - python manage.py startapp api
+2. **Install DRF (djangorestframework)** - pip install djangorestframework
+3. **Add DRF to requirements.txt**
+4. **Add rest_framework & api app to the real_estate/settings.py INSTALLED_APPS**
+5. **Include api/urls.py to real_estate/urls.py**
+6. **Create api/urls.py**
+7. **Create serializer.py**
+8. **Create views in api/view.py**
+9. **Enable pagination - add REST_FRAMEWORK section to real_estate/settings.py with DEFAULT_PAGINATION_CLASS**
+10. **Use website login/logout functionality to test API** - need to have api-auth/ in api/urls.py for that
+11. **Repeat steps urls + serializers + views to prepare other API calls)**
+
