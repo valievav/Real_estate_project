@@ -7,6 +7,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'realtors', views.RealtorsViewSet, basename="realtor")
 router.register(r'listings', views.ListingViewSet, basename="listing")
+router.register(r'contact', views.ContactViewSet, basename="contact")
 
 urlpatterns = [
     path('', include(router.urls)),

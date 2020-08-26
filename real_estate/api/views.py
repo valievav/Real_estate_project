@@ -1,16 +1,17 @@
 from django.db.models import Q
+from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import viewsets
 
+from contacts.models import Contact
 from listings.models import Listing
 from realtors.models import Realtor
-from .serializers import ListingSerializer, RealtorSerializer
+from .serializers import ListingSerializer, RealtorSerializer, ContactSerializer
 
 
 class RealtorsViewSet(viewsets.ModelViewSet):
     """
     API endpoint for realtors.
-    Note: create/update/delete calls available only for authenticated users.
     """
     queryset = Realtor.objects.filter(is_published=True).order_by("-is_mvp", "hire_date")
     serializer_class = RealtorSerializer
@@ -20,8 +21,8 @@ class RealtorsViewSet(viewsets.ModelViewSet):
 class ListingViewSet(viewsets.ModelViewSet):
     """
     API endpoint for listings.
-    Can be filtered by 'keywords', 'city', 'state', 'bedrooms', 'price'  (e.g /api/listings/?bedrooms=5&price=400000).
-    Note: create/update/delete calls available only for authenticated users.
+    Can be filtered by 'keywords', 'city', 'state', 'bedrooms', 'price'.
+    Example: api/listings/?bedrooms=5&price=400000
     """
     serializer_class = ListingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -48,3 +49,21 @@ class ListingViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(price__lte=price)
 
         return queryset
+
+
+class ContactViewSet(mixins.CreateModelMixin,
+                     mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
+                     viewsets.GenericViewSet):
+    """
+    API endpoint for contacts.
+    """
+    serializer_class = ContactSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Contact.objects.filter(user_id=user_id).order_by('-contact_date')
+
+    def perform_create(self, serializer):
+        serializer.save(user_id=self.request.user.id)  # set user to the current user automatically
