@@ -3809,9 +3809,9 @@ readers do not read off random characters that represent icons */
   font-weight: 900; }
 
 .card-img-top {
-vertical-align: middle;
-    max-height: 300px;
-    min-height: 200px;
+    vertical-align: middle;
+    max-height: 280px;
+    min-height: 280px;
     object-fit: cover;
 }
 
