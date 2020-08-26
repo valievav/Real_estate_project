@@ -34,7 +34,7 @@ img {
     background: rgba(51, 51, 51, 0.8); }
 
 #services {
-  background: url(../img/building.jpg) no-repeat center bottom/cover;
+  background: url(../img/showcase.jpg) no-repeat center bottom/cover;
   min-height: 300px;
   position: relative;
   overflow: hidden; }
@@ -48,7 +48,7 @@ img {
     background: rgba(32, 134, 107, 0.8); }
 
 #showcase-inner {
-  background: url(../img/building.jpg) no-repeat center bottom/cover;
+  background: url(../img/showcase.jpg) no-repeat center center/cover;
   position: relative;
   overflow: hidden;
   min-height: 200px; }
@@ -64,7 +64,7 @@ img {
     min-height: 270px; }
 
 #work {
-  padding: 6rem 0; }
+  padding: 3rem 0; }
 
 .listing-preview a {
   position: relative; }
