@@ -10,7 +10,7 @@ from .serializers import ListingSerializer, RealtorSerializer
 class RealtorsViewSet(viewsets.ModelViewSet):
     """
     API endpoint for realtors.
-    Note: POST, PUT, PATCH & DELETE available only for authenticated users.
+    Note: create/update/delete calls available only for authenticated users.
     """
     queryset = Realtor.objects.filter(is_published=True).order_by("-is_mvp", "hire_date")
     serializer_class = RealtorSerializer
@@ -20,7 +20,8 @@ class RealtorsViewSet(viewsets.ModelViewSet):
 class ListingViewSet(viewsets.ModelViewSet):
     """
     API endpoint for listings.
-    Note: POST, PUT, PATCH & DELETE available only for authenticated users.
+    Can be filtered by 'keywords', 'city', 'state', 'bedrooms', 'price'  (e.g /api/listings/?bedrooms=5&price=400000).
+    Note: create/update/delete calls available only for authenticated users.
     """
     serializer_class = ListingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
