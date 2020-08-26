@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import permissions
 from rest_framework import viewsets
 
@@ -8,8 +9,8 @@ from .serializers import ListingSerializer, RealtorSerializer
 
 class RealtorsViewSet(viewsets.ModelViewSet):
     """
-    API endpoint to GET & POST realtors.
-    POST available only for authenticated users.
+    API endpoint for realtors.
+    Note: POST, PUT, PATCH & DELETE available only for authenticated users.
     """
     queryset = Realtor.objects.filter(is_published=True).order_by("-is_mvp", "hire_date")
     serializer_class = RealtorSerializer
@@ -18,9 +19,31 @@ class RealtorsViewSet(viewsets.ModelViewSet):
 
 class ListingViewSet(viewsets.ModelViewSet):
     """
-    API endpoint to GET & POST Listings.
-    POST available only for authenticated users.
+    API endpoint for listings.
+    Note: POST, PUT, PATCH & DELETE available only for authenticated users.
     """
-    queryset = Listing.objects.filter(is_published=True).order_by('-list_date')
     serializer_class = ListingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    # overwrite queryset with custom search
+    def get_queryset(self):
+        queryset = Listing.objects.filter(is_published=True).order_by('-list_date')
+
+        keywords = self.request.query_params.get('keywords')
+        city = self.request.query_params.get('city')
+        state = self.request.query_params.get('state')
+        bedrooms = self.request.query_params.get('bedrooms')
+        price = self.request.query_params.get('price')
+
+        if keywords:
+            queryset = queryset.filter(Q(title__icontains=keywords) | Q(description__icontains=keywords))
+        if city:
+            queryset = queryset.filter(city__iexact=city)
+        if state and state != 'All':
+            queryset = queryset.filter(state__iexact=state)
+        if bedrooms and bedrooms != 'Any':
+            queryset = queryset.filter(bedrooms__lte=bedrooms)
+        if price and price != 'Any':
+            queryset = queryset.filter(price__lte=price)
+
+        return queryset

@@ -345,3 +345,7 @@ where ACTION - regenerate static folder (python manage.py collectstatic)/ run mi
 10. **Use website login/logout functionality to test API** - need to have api-auth/ in api/urls.py for that
 11. **Repeat steps urls + serializers + views to prepare other API calls)**
 
+<ins>Add filtering to API calls:
+1. **Overwrite default get_queryset with custom search for api/urls.py**
+2. **Add basename for router in api/urls.py (required because of overwritten default get_queryset)** - where [basename](https://www.django-rest-framework.org/api-guide/routers/) is the initial part of the view name pattern (e.g. ListingViewSet -> basename='listing)
+

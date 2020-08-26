@@ -3,10 +3,10 @@ from rest_framework import routers
 
 from . import views
 
-# for Root api view
+# Root API view
 router = routers.DefaultRouter()
-router.register(r'realtors', views.RealtorsViewSet)
-router.register(r'listings', views.ListingViewSet)
+router.register(r'realtors', views.RealtorsViewSet, basename="realtor")
+router.register(r'listings', views.ListingViewSet, basename="listing")
 
 urlpatterns = [
     path('', include(router.urls)),
