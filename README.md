@@ -321,13 +321,18 @@ server {
 8. **GOTO ip (w/o port, it's automatically running on 80)** - website up and running :) YEY!
 9. **If issues** - (check nginx running) systemctl status nginx -> (check issue) sudo tail -30 /var/log/nginx/error.log 
 
-<ins>On repo update:
+🢂 <ins>On repo update:
 1. **GOTO repo location** - cd /home/djangoadmin/pyapps/Real_estate_project
 2. **Pull changes** - git pull
-3. **Restart NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
-4. **Clear browser cache**
-5. **If issues** - cd /home/djangoadmin/pyapps -> source venv/bin/activate -> cd Real_estate_project/real_estate -> ACTION -> deactivate -> Restart NGINX & Gunicorn, 
-where ACTION - regenerate static folder (python manage.py collectstatic)/ run migrations etc.
+3. **IF backend update -> activate venv -> run action -> deactivate**
+* cd /home/djangoadmin/pyapps -> source venv/bin/activate -> cd Real_estate_project/real_estate
+* ACTION (like regenerate static folder) - python manage.py collectstatic
+* ACTION (like install libs) - pip install -r requirements.txt
+* ACTION (like run migration) - python manage.py migrate
+* ACTION (any other)
+* cd .. -> deactivate
+4. **Restart NGINX & Gunicorn** -  sudo systemctl restart nginx -> sudo systemctl restart gunicorn
+5. **IF UI update -> clear browser cache**
 
 ---
 ###  API
