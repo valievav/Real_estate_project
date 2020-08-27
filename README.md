@@ -349,3 +349,14 @@ where ACTION - regenerate static folder (python manage.py collectstatic)/ run mi
 1. **Overwrite default get_queryset with custom search for api/urls.py**
 2. **Add basename for router in api/urls.py (required because of overwritten default get_queryset)** - where [basename](https://www.django-rest-framework.org/api-guide/routers/) is the initial part of the view name pattern (e.g. ListingViewSet -> basename='listing')
 
+<ins>Add Token Authentication (JSON Web Token):
+1. **Install [djangorestframework_simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#installation)** - pip install djangorestframework_simplejwt (no need db to validate, [more on JWT](https://jwt.io/introduction/))
+2. **Create 2 endpoints (api/token & api/token/refresh) in api/urls.py with TokenObtainPairView and TokenRefreshView views** 
+* api/token - to get 2 tokens (assess and refresh) for registered user
+* api/token/refresh - to get new access token using refresh token from prev. call
+3. **Test endpoints** - curl or Postman
+```
+curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"venus\", \"password\": \"123\"}" http://localhost:8000/api/token/
+# response {'refresh': ****, 'access': ****}
+# IMPORTANT: use double quotes for cURL ONLY in Windows cmd, single quotes don't work!
+```
