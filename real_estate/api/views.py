@@ -2,11 +2,13 @@ from django.db.models import Q
 from rest_framework import mixins
 from rest_framework import permissions
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from contacts.models import Contact
 from listings.models import Listing
 from realtors.models import Realtor
-from .serializers import ListingSerializer, RealtorSerializer, ContactSerializer
+from .serializers import ListingSerializer, RealtorSerializer, ContactSerializer, UserSerializer
 
 
 class RealtorsViewSet(viewsets.ModelViewSet):
@@ -67,3 +69,22 @@ class ContactViewSet(mixins.CreateModelMixin,
 
     def perform_create(self, serializer):
         serializer.save(user_id=self.request.user.id)  # set user to the current user automatically
+
+
+@api_view(['POST',])
+def registration_view(request):
+    if request.method == 'POST':
+        serializer = UserSerializer(data=request.data)
+        data = {}
+
+        if serializer.is_valid():
+            user = serializer.save()
+            data['response'] = "Successfully registered new user."
+            data['first_name'] = user.first_name
+            data['last_name'] = user.last_name
+            data['username'] = user.username
+            data['email'] = user.email
+        else:
+            data = serializer.errors
+
+        return Response(data)

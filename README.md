@@ -357,7 +357,7 @@ server {
 <ins>Add Token Authentication (JSON Web Token):
 1. **Install [djangorestframework_simplejwt](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#installation)** - pip install djangorestframework_simplejwt (no need db to validate, [more on JWT](https://jwt.io/introduction/))
 2. **Create 2 endpoints (api/token & api/token/refresh) in api/urls.py with TokenObtainPairView and TokenRefreshView views** 
-* api/token - to get 2 tokens (assess and refresh) for registered user
+* api/token - to get 2 tokens (access and refresh) for registered user
 * api/token/refresh - to get new access token using refresh token from prev. call
 3. **Test endpoints** - curl or Postman
 ```
@@ -365,3 +365,8 @@ curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"venus\", \
 # response {'refresh': ****, 'access': ****}
 # IMPORTANT: use double quotes for cURL ONLY in Windows cmd, single quotes don't work!
 ```
+
+<ins>Add registration/login/logout endpoints:
+1. **Update api/urls.py with view paths**
+2. **Create serializers** - make sure that passwords are write only
+3. **Create views**
